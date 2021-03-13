@@ -1,1 +1,10 @@
-<p>list works!</p>
+<p>{{ title }}</p>
+<ul>
+  <li *ngFor="let film of films">
+    <a href="{{film.link}}">{{ film.title }}</a>
+  </li>
+  <!--ng-template ngFor let-film [ngForOf]="films">
+    <ng-template [ngIf]="film?.title" !== 'Tom & Jerry'"></ng-template>
+    <li>{{ film?.title }}</li>
+  </ng-template-->
+</ul>

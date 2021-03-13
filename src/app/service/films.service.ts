@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Film } from '../interfaces/films.interfaces';
+
 
 @Injectable({
   providedIn: 'root',
@@ -6,27 +10,37 @@ import { Injectable } from '@angular/core';
 export class FilmsService {
   private films = [];
 
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  createFilms(): any[] {
-    const films = [];
-    for (let i = 0; i < 99; i++) {
-      films.push({ id: i + 1, name: 'film' + i, category: 'category' + i });
-    }
-    this.setFilms(films);
-    return films;
+  private static urlGetFilms(): string {
+    return 'https://api.themoviedb.org/3/movie/popular?api_key=0e246cd8d692477cf3059d0f1b6b2f1e&language=en-US&page=1';
   }
 
-  private setFilms(films) {
+  public getFilms(): Observable<Film[]> {
+
+    return new Observable(subs => {
+      if(!this.getLocalFilm().length) {
+        this.http.get(FilmsService.urlGetFilms()).subscribe((film:any) => {
+          this.setFilms(film.results);
+          subs.next(film.results);
+        } )
+      } else {
+        subs.next(this.getLocalFilm());
+      }
+    })
+
+  }
+
+  // Guardamos la ocleccion de peliculas em local
+  private setFilms(films: Film[]): void {
     this.films = films;
   }
 
-  public getFilms() {
-    let films = this.films;
-    if(!films.length) {
-      films = this.createFilms()
-    }
-    return films;
+  // Definimos una funcion que nos devuelva las peliculas en local
+  private getLocalFilm(): Film[] {
+    return this.films;
   }
 
 }
