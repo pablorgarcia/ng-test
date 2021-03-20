@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list/list.component';
 import { FilmsService } from '../service/films.service';
+
+import { ListComponent } from './list/list.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    DetailComponent
   ],
   exports: [
     ListComponent

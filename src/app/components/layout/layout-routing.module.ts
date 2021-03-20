@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListComponent } from 'src/app/pages/list/list.component';
+import { ListComponent } from '../../pages/list/list.component';
+import { DetailComponent } from '../../pages/detail/detail.component';
 import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [
@@ -9,8 +10,12 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'list',
+        path: 'lista',
         component: ListComponent
+      },
+      {
+        path: 'detail/:id',
+        component: DetailComponent
       }
     ]
   }
