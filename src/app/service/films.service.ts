@@ -18,6 +18,10 @@ export class FilmsService {
     return 'https://api.themoviedb.org/3/movie/popular?api_key=0e246cd8d692477cf3059d0f1b6b2f1e&language=en-US&page=1';
   }
 
+  private static urlGetFilmDetail(idFilm: string | number): string {
+    return 'https://api.themoviedb.org/3/movie/' + idFilm + '?api_key=0e246cd8d692477cf3059d0f1b6b2f1e&language=en-US';
+  }
+
   public getFilms(): Observable<Film[]> {
 
     return new Observable(subs => {
@@ -31,6 +35,10 @@ export class FilmsService {
       }
     })
 
+  }
+
+  public getFilmDetail(id: string | number): Observable<any> {
+    return this.http.get(FilmsService.urlGetFilmDetail(id))
   }
 
   // Guardamos la ocleccion de peliculas em local

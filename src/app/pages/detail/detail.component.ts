@@ -10,6 +10,8 @@ import { FilmsService } from '../../service/films.service';
 })
 export class DetailComponent implements OnInit {
 
+  // @Input() title: string | undefined;
+
   public film: Film | undefined;
 
   constructor(
@@ -17,11 +19,17 @@ export class DetailComponent implements OnInit {
     private filmService: FilmsService
   ) { }
 
+/*
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+*/
+
   ngOnInit(): void {
     const params = this.router.snapshot.params
     const idFilm = params.id;
-    this.filmService.getFilms().subscribe(films => {
-      this.film = films.find(({id}) => id === Number(idFilm));
+    this.filmService.getFilmDetail(idFilm).subscribe(film => {
+      console.log(film)
     });
   }
 
