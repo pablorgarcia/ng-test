@@ -14,4 +14,7 @@ export interface Film {
   vote_average: number;
   vote_count: number;
   link?: string;
+  genres?: {id: number; name:string}[];
+  spoken_languages?: {english_name: string; iso_639_1: string; name: string}[];
+  favourite?: boolean;
 }

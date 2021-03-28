@@ -29,8 +29,12 @@ export class DetailComponent implements OnInit {
     const params = this.router.snapshot.params
     const idFilm = params.id;
     this.filmService.getFilmDetail(idFilm).subscribe(film => {
-      console.log(film)
+      this.film = film;
     });
+  }
+
+  toggleFavourite(): void{
+    this.film.favourite = !this.film.favourite;
   }
 
 }

@@ -1,2 +1,37 @@
-<!--h1>{{ title }}</h1-->
-<p>{{ film?.title }}</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <img class="img-fluid" src="https://image.tmdb.org/t/p/original/{{ film?.backdrop_path }}" alt="{{ film?.title }}">
+    </div>
+    <div class="col-md-4">
+      <!--h1>{{ title }}</h1-->
+      <div class="row align-items-center">
+        <div class="col-md-10">
+          <h1>{{ film?.title }}</h1>
+        </div>
+        <div class="col-md-2">
+          <span (click)="toggleFavourite()" [ngClass]="{ 'favourite': film?.favourite }">FV</span>
+        </div>
+      </div>
+      <!--h1>{{ film?.title }}</h1-->
+      <p>{{ film?.overview }}</p>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Género</h3>
+          <ul>
+            <li *ngFor="let gen of film?.genres">{{ gen?.name }}</li>
+          </ul>
+        </div>
+        <div class="col-sm-12">
+          <h3>Idiomas</h3>
+          <ng-template ngFor let-lang [ngForOf]="film?.spoken_languages">
+            <div>{{ lang?.name }}
+              <span class="badge badge-secondary">{{ lang?.iso_639_1 }}</span>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
