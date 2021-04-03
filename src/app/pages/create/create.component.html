@@ -1,22 +1,44 @@
 <div class="container">
-  <form formGroup="filmFormGroup">
+  <form [formGroup]="filmFormGroup">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <label for="">Titulo</label>
-        <input type="text" formControleName="title">
+        <input type="text" formControlName="title">
+        <span *ngIf="
+          filmFormGroup?.get('title')?.touched &&
+          filmFormGroup?.get('title')?.errors?.required">
+            Este campo es requerido
+        </span>
       </div>
       <div class="col-md-6 col-sm-12">
         <label for="">Descripcion</label>
-        <textarea formControleName="overview"></textarea>
+        <textarea formControlName="overview"></textarea>
       </div>
       <div class="col-md-6 col-sm-12">
         <label for=""></label>
-        <input type="checkbox" formControleName="adult"> Adulto
+        <input type="checkbox" formControlName="adult"> Adulto
       </div>
       <div class="col-md-6 col-sm-12">
         <label for=""></label>
-        <input type="checkbox" formControleName="favourite"> Favorito
+        <input type="checkbox" formControlName="favourite"> Favorito
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">Idiomas</div>
+      <form [formGroup]="langFormGroup">
+        <div class="col-md-6 col-sm-12">
+          <label for=""></label>
+          <input type="text" formControlName="shortName"> Nombre corto
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for=""></label>
+          <input type="text" formControlName="langName"> Nombre de idioma
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <button type="button" (click)="addLang()" [disabled]="!langFormGroup.valid">Añadir</button>
+        </div>
+      </form>
+    </div>
+    <button type="submit" (click)="onSubmit()" [disabled]="!filmFormGroup.valid">Enviar</button>
   </form>
 </div>
