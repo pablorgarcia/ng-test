@@ -6,13 +6,14 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../components/shared/shared.module';
 
 
 @NgModule({
   declarations: [
     ListComponent,
     DetailComponent,
-    CreateComponent
+    CreateComponent,
   ],
   exports: [
     ListComponent
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
     FilmsService

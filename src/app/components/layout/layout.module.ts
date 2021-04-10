@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LayoutComponent } from './layout.component';
 import { PagesModule } from '../../pages/pages.module';
+import { LayoutComponent } from './layout.component';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { PagesModule } from '../../pages/pages.module';
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    PagesModule
+    PagesModule,
   ],
 })
 export class LayoutModule { }

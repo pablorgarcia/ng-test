@@ -2,24 +2,23 @@
   <form [formGroup]="filmFormGroup">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <label for="">Titulo</label>
+        <label>Titulo</label>
         <input type="text" formControlName="title">
-        <span *ngIf="
-          filmFormGroup?.get('title')?.touched &&
-          filmFormGroup?.get('title')?.errors?.required">
-            Este campo es requerido
-        </span>
+        <app-form-messages
+          *ngIf="filmFormGroup?.get('title')?.touched && filmFormGroup?.get('title')?.errors"
+          [error]="filmFormGroup?.get('title')?.errors">
+        </app-form-messages>
       </div>
       <div class="col-md-6 col-sm-12">
-        <label for="">Descripcion</label>
+        <label>Descripcion</label>
         <textarea formControlName="overview"></textarea>
       </div>
       <div class="col-md-6 col-sm-12">
-        <label for=""></label>
+        <label></label>
         <input type="checkbox" formControlName="adult"> Adulto
       </div>
       <div class="col-md-6 col-sm-12">
-        <label for=""></label>
+        <label></label>
         <input type="checkbox" formControlName="favourite"> Favorito
       </div>
     </div>
@@ -27,11 +26,11 @@
       <div class="col-12">Idiomas</div>
       <form [formGroup]="langFormGroup">
         <div class="col-md-6 col-sm-12">
-          <label for=""></label>
+          <label></label>
           <input type="text" formControlName="shortName"> Nombre corto
         </div>
         <div class="col-md-6 col-sm-12">
-          <label for=""></label>
+          <label></label>
           <input type="text" formControlName="langName"> Nombre de idioma
         </div>
         <div class="col-md-6 col-sm-12">

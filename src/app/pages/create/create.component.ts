@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FILM_FORM } from '../../service/constant/form.constant';
 
@@ -18,7 +19,10 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   private unsubscribes: Subscription[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.filmFormGroup = this.fb.group(FILM_FORM);
@@ -62,6 +66,7 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.filmFormGroup.value);
+    this.router.navigateByUrl('/lista');
   }
 
   ngOnDestroy() {

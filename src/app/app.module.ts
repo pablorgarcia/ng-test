@@ -9,7 +9,6 @@ import { LayoutModule } from './components/layout/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
