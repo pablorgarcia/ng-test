@@ -7,6 +7,10 @@ import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../components/shared/shared.module';
+import { FormulariosComponent } from './formularios/formularios.component';
+import { Formulario1Component } from './formularios/formulario1/formulario1.component';
+import { Formulario2Component } from './formularios/formulario2/formulario2.component';
+import { Formulario3Component } from './formularios/formulario3/formulario3.component';
 
 
 @NgModule({
@@ -14,6 +18,10 @@ import { SharedModule } from '../components/shared/shared.module';
     ListComponent,
     DetailComponent,
     CreateComponent,
+    FormulariosComponent,
+    Formulario1Component,
+    Formulario2Component,
+    Formulario3Component,
   ],
   exports: [
     ListComponent
@@ -28,4 +36,4 @@ import { SharedModule } from '../components/shared/shared.module';
     FilmsService
   ]
 })
-export class PagesModule { }
+export class PagesModule {}

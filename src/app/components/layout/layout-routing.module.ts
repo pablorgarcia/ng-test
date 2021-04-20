@@ -4,6 +4,7 @@ import { ListComponent } from '../../pages/list/list.component';
 import { DetailComponent } from '../../pages/detail/detail.component';
 import { LayoutComponent } from './layout.component';
 import { CreateComponent } from '../../pages/create/create.component';
+import { FormulariosComponent } from '../../pages/formularios/formularios.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateComponent
-      }
+      },
+      {
+        path: 'forms',
+        component: FormulariosComponent
+      },
     ]
   }
 ];

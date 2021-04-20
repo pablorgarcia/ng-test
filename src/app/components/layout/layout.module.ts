@@ -20,7 +20,7 @@ import { LayoutComponent } from './layout.component';
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    PagesModule,
+    PagesModule
   ],
 })
 export class LayoutModule { }

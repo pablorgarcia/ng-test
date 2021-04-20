@@ -9,6 +9,9 @@ import { FormMessagesComponent } from './form-messages/form-messages.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [
+    FormMessagesComponent
+  ],
 })
 export class SharedModule { }
