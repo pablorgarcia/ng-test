@@ -11,6 +11,7 @@ import { FormulariosComponent } from './formularios/formularios.component';
 import { Formulario1Component } from './formularios/formulario1/formulario1.component';
 import { Formulario2Component } from './formularios/formulario2/formulario2.component';
 import { Formulario3Component } from './formularios/formulario3/formulario3.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { Formulario3Component } from './formularios/formulario3/formulario3.comp
     Formulario1Component,
     Formulario2Component,
     Formulario3Component,
+    LoginComponent,
   ],
   exports: [
     ListComponent

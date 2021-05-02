@@ -14,19 +14,31 @@ export class FilmsService {
     private http: HttpClient
   ) {}
 
+  private static getBaseUrl(): string {
+    return 'https://api.themoviedb.org/3/movie/';
+  }
+
+  private static getDefaultParams(): { api_key: string, languaje: string } {
+    return {
+      api_key: '0e246cd8d692477cf3059d0f1b6b2f1e',
+      languaje: 'en-US'
+    }
+  }
+
   private static urlGetFilms(): string {
-    return 'https://api.themoviedb.org/3/movie/popular?api_key=0e246cd8d692477cf3059d0f1b6b2f1e&language=en-US&page=1';
+    return FilmsService.getBaseUrl() + 'popular';
   }
 
   private static urlGetFilmDetail(idFilm: string | number): string {
-    return 'https://api.themoviedb.org/3/movie/' + idFilm + '?api_key=0e246cd8d692477cf3059d0f1b6b2f1e&language=en-US';
+    return FilmsService.getBaseUrl() + idFilm;
   }
 
   public getFilms(): Observable<Film[]> {
+    const params: any = { ...FilmsService.getDefaultParams(), page: 1 };
 
     return new Observable(subs => {
       if(!this.getLocalFilm().length) {
-        this.http.get(FilmsService.urlGetFilms()).subscribe((film:any) => {
+        this.http.get(FilmsService.urlGetFilms(), { params } ).subscribe((film:any) => {
           this.setFilms(film.results);
           subs.next(film.results);
         } )
@@ -37,8 +49,9 @@ export class FilmsService {
 
   }
 
-  public getFilmDetail(id: string | number): Observable<any> {
-    return this.http.get(FilmsService.urlGetFilmDetail(id))
+  public getFilmDetail(id: string | number | any): Observable<any> {
+    const params = FilmsService.getDefaultParams();
+    return this.http.get(FilmsService.urlGetFilmDetail(id), { params })
   }
 
   // Guardamos la ocleccion de peliculas em local

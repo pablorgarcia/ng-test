@@ -5,10 +5,13 @@ import { DetailComponent } from '../../pages/detail/detail.component';
 import { LayoutComponent } from './layout.component';
 import { CreateComponent } from '../../pages/create/create.component';
 import { FormulariosComponent } from '../../pages/formularios/formularios.component';
+import { FilmResolverResolver } from '../../resolvers/film-resolver.resolver';
+import { AuthGuard } from '../../pages/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
     component: LayoutComponent,
     children: [
       {
@@ -17,7 +20,8 @@ const routes: Routes = [
       },
       {
         path: 'detail/:id',
-        component: DetailComponent
+        component: DetailComponent,
+        resolve: { film: FilmResolverResolver }
       },
       {
         path: 'create',
