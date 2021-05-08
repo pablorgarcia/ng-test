@@ -8,4 +8,16 @@
   <input type="number" formControlName="f2ActualNum"> *
   <input type="number" formControlName="f2Percent"> =
   <input type="number" formControlName="f2Result">
+
+  <input type="date" formControlName="f2StartDate" (change)="onStartDateChange()">
+  <span *ngIf="form2Group?.get('f2StartDate')?.touched && form2Group?.get('f2StartDate')?.errors && form2Group?.get('f2StartDate')?.errors?.date">
+    La fecha inicial no puede ser inferior a la fecha final.
+  </span>
+  <input type="date" formControlName="f2EndDate" (change)="onEndDateChange()">
+  <span *ngIf="form2Group?.get('f2EndDate')?.touched && form2Group?.get('f2EndDate')?.errors && form2Group?.get('f2EndDate')?.errors?.date">
+    La fecha final no puede ser superior a la fecha inicial.
+  </span>
+
+  <input type="number" formControlName="f2NumDate">
+  <!--input type="text" formControlName="f2Text"-->
 </form>
