@@ -113,18 +113,21 @@ export class Formulario2Component implements OnInit {
     const startDate = this.form2Group.controls['f2StartDate'].value;
     const endDate = this.form2Group.controls['f2EndDate'].value;
 
+    console.log('startDate', startDate)
+    console.log('endDate', endDate)
+
     if (startDate) {
       const checkDateValid = this.checkDatesValidation(new Date(startDate), new Date(endDate));
       if (!checkDateValid) {
         // Ponemos que la fecha final sea la fecha de inicio
-        // const startDateValue = new Date(endDate);
+        const startDateValue = new Date(endDate);
 
         // // Sumamos un día a la fecha final.
-        // startDateValue.setDate(startDateValue.getDate() - 1);
+        startDateValue.setDate(startDateValue.getDate() - 1);
 
         // // Actualizamos en el formulario el valor de la fecha
-        // this.form2Group.controls['f2StartDate'].setValue(this.dateToString(startDateValue,'y-MM-dd'));
-        // this.form2Group.controls['f2StartDate'].updateValueAndValidity();
+        this.form2Group.controls['f2StartDate'].setValue(this.dateToString(startDateValue,'y-MM-dd'));
+        this.form2Group.controls['f2StartDate'].updateValueAndValidity();
         this.form2Group.controls['f2StartDate'].setErrors({ date: true });
       } else {
         this.form2Group.controls['f2StartDate'].setErrors(null);
